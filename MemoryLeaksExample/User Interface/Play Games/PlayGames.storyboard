@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Play-->
+        <!--Games-->
         <scene sceneID="pRC-1H-lXH">
             <objects>
-                <viewController title="Play" id="jeK-qj-Wrc" customClass="PlayGamesViewController" customModule="MemoryLeaksExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Games" id="jeK-qj-Wrc" customClass="PlayGamesViewController" customModule="MemoryLeaksExample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Q2-DA-Luy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
