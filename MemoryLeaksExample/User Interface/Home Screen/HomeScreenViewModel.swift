@@ -9,51 +9,41 @@ import ReSwift
 import RxSwift
 import RxCocoa
 
-struct HomeScreenViewModel {
+func homeScreenViewModel(viewProfileTap: Observable<Void>,
+                         playGamesTap: Observable<Void>,
+                         logoutTap: Observable<Void>)
+    -> (username: Driver<Username>,
+    viewProfileDisposable: Disposable,
+    playGamesDisposable: Disposable,
+    logoutDisposable: Disposable)
+{
     
-    struct UIInputs {
-        let viewProfileTap: Observable<Void>
-        let playGamesTap: Observable<Void>
-        let logoutTap: Observable<Void>
-    }
+    let username = Dependencies.appState
+        .map { $0.loginState.loginStatus.username }
+        .unwrapOptional()
+        .map { "\($0) - Home Screen" }
+        .asDriverLogError()
     
-    //UIOutputs
-    let username: Driver<Username>
-    let viewProfileDisposable: Disposable
-    let playGamesDisposable: Disposable
-    let logoutDisposable: Disposable
+    let viewProfileDisposable = viewProfileTap
+        .subscribe(onNext: pushViewProfileStoryboard)
+    
+    let playGamesDisposable = playGamesTap
+        .subscribe(onNext: pushPlayGamesStoryboard)
+    
+    let logoutDisposable = logoutTap
+        .do(onNext: logUserOut)
+        .subscribe(onNext: displayLoginScreen)
+    return (username, viewProfileDisposable, playGamesDisposable, logoutDisposable)
 }
 
-extension HomeScreenViewModel {
-   
-    init(_ inputs: UIInputs ) {
-    
-        username = Dependencies.appState
-            .map { $0.loginState.loginStatus.username }
-            .unwrapOptional()
-            .map { "\($0) - Home Screen" }
-            .asDriverLogError()
-        
-        viewProfileDisposable = inputs.viewProfileTap
-            .subscribe(onNext: pushViewProfileView)
-        
-        playGamesDisposable = inputs.playGamesTap
-            .subscribe(onNext: pushPlayGamesView)
-        
-        logoutDisposable = inputs.logoutTap
-            .do(onNext: logUserOut)
-            .subscribe(onNext: displayLoginScreen)
-    }
+fileprivate func pushPlayGamesStoryboard() {
+    appRouterAction(.push(.playGamesStoryboard))
 }
 
-fileprivate func pushPlayGamesView() {
-    appRouter(.push(.playGamesStoryboard))
-}
-
-fileprivate func pushViewProfileView() {
-    appRouter(.push(.viewProfileStoryboard))
+fileprivate func pushViewProfileStoryboard() {
+    appRouterAction(.push(.viewProfileStoryboard))
 }
 
 fileprivate func displayLoginScreen() {
-    appRouter(.displayLoginScreen)
+    appRouterAction(.displayLoginScreen)
 }

@@ -20,14 +20,12 @@ class HomeScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let inputs = HomeScreenViewModel.UIInputs(
+        let viewModel = homeScreenViewModel(
             viewProfileTap: viewProfileButton.rx.tap.asObservable(),
             playGamesTap: playGamesButton.rx.tap.asObservable(),
             logoutTap: logoutButton.rx.tap.asObservable()
         )
         
-        let viewModel = HomeScreenViewModel(inputs)
-
         bag.insert(
             viewModel.username.drive(usernameLabel.rx.text),
             viewModel.viewProfileDisposable,
