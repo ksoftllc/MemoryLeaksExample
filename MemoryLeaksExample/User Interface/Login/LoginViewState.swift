@@ -41,6 +41,6 @@ enum LoginViewAction: Action {
 }
 
 //Convenience functions
-func loginView(_ action: LoginViewAction) {
+func loginViewAction(_ action: LoginViewAction) {
     Dependencies.loginView(action)
 }

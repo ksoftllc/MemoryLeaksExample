@@ -118,6 +118,6 @@ class AppRouter {
 }
 
 //Convenience functions
-func appRouter(_ action: RoutingAction) {
+func appRouterAction(_ action: RoutingAction) {
     Dependencies.router(action)
 }
