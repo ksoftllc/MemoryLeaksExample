@@ -21,6 +21,7 @@ struct LoginViewModel {
     let loginEnabled: Driver<Bool>
     let validatingCredentials: Driver<Bool>
     let loginTapDisposable: Disposable
+    let endEditing: Driver<Bool>
 }
 
 
@@ -45,14 +46,22 @@ extension LoginViewModel {
             .asDriverLogError()
         
         loginTapDisposable = inputs.loginTap
-            .withLatestFrom(usernameAndPassword)
-            .do(onNext: { _ in 
-                loginView(.startValidatingCredentials)
+            .do(onNext: { _ in
+                loginViewAction(.startValidatingCredentials)
             })
+            .withLatestFrom(usernameAndPassword)
             .flatMap(Dependencies.loginValidator)
-            .subscribe(onNext: processLoginResult)
+            .do(onNext: { _ in
+                loginViewAction(.startValidatingCredentials)
+            })
+            .subscribe(onNext: {
+                processLoginResult($0)
+            })
         
-        loginView(.allowInput)
+        endEditing = isViewStateEnteringCredentials
+            .asDriverLogError()
+        
+        loginViewAction(.allowInput)
     }
 }
 
@@ -68,10 +77,11 @@ fileprivate func processLoginResult(_ loginResult: LoginResult) {
     switch loginResult {
     case .success(let username, let jwt):
         logUserIn(username: username, jwt: jwt)
-        appRouter(.displayHomeScreen)
+        appRouterAction(.displayHomeScreen)
     case .failure:
-        appRouter(.alert(title: "Failed Login", message: "Verify that username and password are correct", completion: {
-            appRouter(.displayLoginScreen)
+        appRouterAction(.alert(title: "Failed Login", message: "Verify that username and password are correct", completion: {
+            appRouterAction(.displayLoginScreen)
         }))
     }
+    loginViewAction(.allowInput)
 }

@@ -7,7 +7,6 @@
 
 import UIKit
 import RxSwift
-//import RxCocoa
 import ReSwift
 
 class LoginViewController: UIViewController {
@@ -34,7 +33,8 @@ class LoginViewController: UIViewController {
         bag.insert(
             viewModel.loginEnabled.drive(loginButton.rx.isEnabled),
             viewModel.validatingCredentials.drive(activityIndicator.rx.isAnimating),
-            viewModel.loginTapDisposable
+            viewModel.loginTapDisposable,
+            viewModel.endEditing.drive(view.rx.isUserInteractionEnabled)
         )
     }
     
