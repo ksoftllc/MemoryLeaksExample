@@ -20,8 +20,8 @@ struct Environment {
     var appState: Observable<AppState> = appStateStore.state
     
     //AppRouter
-    var router: (AppRouterAction) -> Void = { action in appRouterStateStore.dispatch(action) } 
-    var appRouterState: Observable<RoutingState> = appRouterStateStore.state
+    var routerAction: (AppRouterAction) -> Void = { action in appRouterStateStore.dispatch(action) } 
+    var appRouterState: Observable<AppRouterState> = appRouterStateStore.state
     
     //LoginView
     var loginView: (LoginViewAction) -> Void = { action in loginViewStateStore.dispatch(action) }
@@ -36,5 +36,6 @@ let Dependencies = Environment()
 #endif
 
 fileprivate var appStateStore = RxStore<AppState>(reducer: appReducer, initialState: nil)
-fileprivate var appRouterStateStore = RxStore<RoutingState>(reducer: routingReducer, initialState: nil)
+fileprivate var appRouterStateStore = AppRouter.storeInstance(reducer: routingReducer,
+                                                              initialState: AppRouterState(route: initialRoute))
 fileprivate var loginViewStateStore = RxStore<LoginViewState>(reducer: loginViewReducer, initialState: nil)

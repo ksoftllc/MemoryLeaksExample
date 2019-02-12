@@ -12,6 +12,6 @@ func playGamesViewModel(playTetrisTap: Observable<Void>)
     -> Disposable {
     return playTetrisTap
         .subscribe(onNext: {
-            Dependencies.router(RoutingAction.pushTetris)
+            Dependencies.routerAction(RoutingAction.pushTetris)
         })
 }

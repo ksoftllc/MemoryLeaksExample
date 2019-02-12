@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import CMUtilities
 
 @UIApplicationMain
   class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,7 +22,7 @@ import CoreData
         let window = UIWindow(frame: UIScreen.main.bounds)
         self.window = window
         window.makeKeyAndVisible()
-        appRouter = AppRouter(window: window)
+        appRouter = AppRouter(window: window, appRouterState: Dependencies.appRouterState)
         
         return true
     }

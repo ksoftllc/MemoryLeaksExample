@@ -138,7 +138,6 @@
 		3873BA402204DF1300A6C615 = {
 			isa = PBXGroup;
 			children = (
-				384C45722211F61D00A29C08 /* CMUtilities.framework */,
 				3873BA4B2204DF1300A6C615 /* MemoryLeaksExample */,
 				3873BA632204DF1500A6C615 /* MemoryLeaksExampleTests */,
 				3873BA4A2204DF1300A6C615 /* Products */,
@@ -261,6 +260,7 @@
 		F6F91DCE2E7176066113DD3A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				384C45722211F61D00A29C08 /* CMUtilities.framework */,
 				74A352283A734EE8D8CD6D15 /* Pods_MemoryLeaksExample.framework */,
 				7A307F609FF234C19F9D3BFF /* Pods_MemoryLeaksExampleTests.framework */,
 			);

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		02E6B4211B73767BCA7CAFED /* Pods_CMUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6C4DDF565E06F115974E8E1 /* Pods_CMUtilities.framework */; };
 		380FC2A3221217C500817253 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380FC2A2221217C500817253 /* Stack.swift */; };
+		380FC2A92213328000817253 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380FC2A82213328000817253 /* AppRouter.swift */; };
 		384C454F2211F19F00A29C08 /* CMUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384C45452211F19E00A29C08 /* CMUtilities.framework */; };
 		384C45542211F19F00A29C08 /* StackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384C45532211F19F00A29C08 /* StackTests.swift */; };
 		384C45562211F19F00A29C08 /* CMUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 384C45482211F19E00A29C08 /* CMUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		380FC2A2221217C500817253 /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
+		380FC2A82213328000817253 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		384C45452211F19E00A29C08 /* CMUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CMUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		384C45482211F19E00A29C08 /* CMUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CMUtilities.h; sourceTree = "<group>"; };
 		384C45492211F19E00A29C08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				384C456A2211F37400A29C08 /* RxStore.swift */,
+				380FC2A82213328000817253 /* AppRouter.swift */,
 			);
 			path = "ReSwift Extensions";
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 				380FC2A3221217C500817253 /* Stack.swift in Sources */,
 				384C456D2211F39B00A29C08 /* AsDriverLogError.swift in Sources */,
 				384C456B2211F37400A29C08 /* RxStore.swift in Sources */,
+				380FC2A92213328000817253 /* AppRouter.swift in Sources */,
 				384C45712211F3CD00A29C08 /* UnwrapOptional.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
