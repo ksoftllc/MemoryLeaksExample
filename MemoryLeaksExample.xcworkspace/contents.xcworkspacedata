@@ -5,6 +5,9 @@
       location = "group:MemoryLeaksExample.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:CMUtilities/CMUtilities.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>

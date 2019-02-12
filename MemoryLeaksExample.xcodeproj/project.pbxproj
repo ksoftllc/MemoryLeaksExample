@@ -9,11 +9,15 @@
 /* Begin PBXBuildFile section */
 		12E9C2975CACA888473AA281 /* Pods_MemoryLeaksExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A307F609FF234C19F9D3BFF /* Pods_MemoryLeaksExampleTests.framework */; };
 		272D09819FE200F6C64C487F /* Pods_MemoryLeaksExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74A352283A734EE8D8CD6D15 /* Pods_MemoryLeaksExample.framework */; };
+		380FC2A5221246F200817253 /* PlayGamesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380FC2A4221246F200817253 /* PlayGamesViewModel.swift */; };
+		384C45732211F61D00A29C08 /* CMUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384C45722211F61D00A29C08 /* CMUtilities.framework */; };
+		384C45742211F61D00A29C08 /* CMUtilities.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 384C45722211F61D00A29C08 /* CMUtilities.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		38519787220DFF0A00CBA659 /* HomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38519786220DFF0A00CBA659 /* HomeScreenViewModel.swift */; };
 		3851978D220E121F00CBA659 /* PlayGames.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3851978C220E121F00CBA659 /* PlayGames.storyboard */; };
 		3851978F220E162900CBA659 /* PlayGamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3851978E220E162900CBA659 /* PlayGamesViewController.swift */; };
 		38519792220E168E00CBA659 /* ViewProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38519791220E168E00CBA659 /* ViewProfile.storyboard */; };
 		38519794220E16A900CBA659 /* ViewProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38519793220E16A900CBA659 /* ViewProfileViewController.swift */; };
+		38519796220E4DC300CBA659 /* GamesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38519795220E4DC300CBA659 /* GamesRepository.swift */; };
 		3873BA4D2204DF1300A6C615 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3873BA4C2204DF1300A6C615 /* AppDelegate.swift */; };
 		3873BA4F2204DF1300A6C615 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3873BA4E2204DF1300A6C615 /* LoginViewController.swift */; };
 		3873BA522204DF1300A6C615 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3873BA502204DF1300A6C615 /* Login.storyboard */; };
@@ -23,15 +27,12 @@
 		3873BA762208E09A00A6C615 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3873BA752208E09A00A6C615 /* Environment.swift */; };
 		3873BA792208FD2800A6C615 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3873BA782208FD2800A6C615 /* LoginViewModel.swift */; };
 		3873BA7B2208FD9400A6C615 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3873BA7A2208FD9400A6C615 /* LoginService.swift */; };
-		3873BA7E2208FF8B00A6C615 /* AsDriverLogError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3873BA7D2208FF8B00A6C615 /* AsDriverLogError.swift */; };
 		3873BADC220A6DBB00A6C615 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3873BADB220A6DBB00A6C615 /* AppState.swift */; };
 		3873BADE220A6EB700A6C615 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3873BADD220A6EB700A6C615 /* AppRouter.swift */; };
 		3873BAE0220A7BE700A6C615 /* LoginState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3873BADF220A7BE700A6C615 /* LoginState.swift */; };
 		3873BAE3220A86BB00A6C615 /* HomeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3873BAE2220A86BB00A6C615 /* HomeScreen.storyboard */; };
 		3873BAE5220A86E900A6C615 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3873BAE4220A86E900A6C615 /* HomeScreenViewController.swift */; };
 		3873BAE8220B507400A6C615 /* LoginViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3873BAE7220B507400A6C615 /* LoginViewState.swift */; };
-		3873BAEA220B739000A6C615 /* RxStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3873BAE9220B739000A6C615 /* RxStore.swift */; };
-		3873BAEE220B962300A6C615 /* UnwrapOptional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3873BAED220B962300A6C615 /* UnwrapOptional.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,13 +45,30 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		384C45752211F61D00A29C08 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				384C45742211F61D00A29C08 /* CMUtilities.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1E71BC796715E799D26F46BD /* Pods-MemoryLeaksExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MemoryLeaksExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-MemoryLeaksExample/Pods-MemoryLeaksExample.release.xcconfig"; sourceTree = "<group>"; };
+		380FC2A4221246F200817253 /* PlayGamesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayGamesViewModel.swift; sourceTree = "<group>"; };
+		384C45722211F61D00A29C08 /* CMUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CMUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		38519786220DFF0A00CBA659 /* HomeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModel.swift; sourceTree = "<group>"; };
 		3851978C220E121F00CBA659 /* PlayGames.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlayGames.storyboard; sourceTree = "<group>"; };
 		3851978E220E162900CBA659 /* PlayGamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayGamesViewController.swift; sourceTree = "<group>"; };
 		38519791220E168E00CBA659 /* ViewProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ViewProfile.storyboard; sourceTree = "<group>"; };
 		38519793220E16A900CBA659 /* ViewProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProfileViewController.swift; sourceTree = "<group>"; };
+		38519795220E4DC300CBA659 /* GamesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesRepository.swift; sourceTree = "<group>"; };
 		3873BA492204DF1300A6C615 /* MemoryLeaksExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemoryLeaksExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3873BA4C2204DF1300A6C615 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3873BA4E2204DF1300A6C615 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -64,15 +82,12 @@
 		3873BA752208E09A00A6C615 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		3873BA782208FD2800A6C615 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		3873BA7A2208FD9400A6C615 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
-		3873BA7D2208FF8B00A6C615 /* AsDriverLogError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsDriverLogError.swift; sourceTree = "<group>"; };
 		3873BADB220A6DBB00A6C615 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		3873BADD220A6EB700A6C615 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		3873BADF220A7BE700A6C615 /* LoginState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginState.swift; sourceTree = "<group>"; };
 		3873BAE2220A86BB00A6C615 /* HomeScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeScreen.storyboard; sourceTree = "<group>"; };
 		3873BAE4220A86E900A6C615 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		3873BAE7220B507400A6C615 /* LoginViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewState.swift; sourceTree = "<group>"; };
-		3873BAE9220B739000A6C615 /* RxStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxStore.swift; sourceTree = "<group>"; };
-		3873BAED220B962300A6C615 /* UnwrapOptional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnwrapOptional.swift; sourceTree = "<group>"; };
 		74A352283A734EE8D8CD6D15 /* Pods_MemoryLeaksExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MemoryLeaksExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A307F609FF234C19F9D3BFF /* Pods_MemoryLeaksExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MemoryLeaksExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		949F14D343E2F9ECA1D8C9F3 /* Pods-MemoryLeaksExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MemoryLeaksExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MemoryLeaksExampleTests/Pods-MemoryLeaksExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -86,6 +101,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				272D09819FE200F6C64C487F /* Pods_MemoryLeaksExample.framework in Frameworks */,
+				384C45732211F61D00A29C08 /* CMUtilities.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +121,7 @@
 			children = (
 				3851978C220E121F00CBA659 /* PlayGames.storyboard */,
 				3851978E220E162900CBA659 /* PlayGamesViewController.swift */,
+				380FC2A4221246F200817253 /* PlayGamesViewModel.swift */,
 			);
 			path = "Play Games";
 			sourceTree = "<group>";
@@ -121,6 +138,7 @@
 		3873BA402204DF1300A6C615 = {
 			isa = PBXGroup;
 			children = (
+				384C45722211F61D00A29C08 /* CMUtilities.framework */,
 				3873BA4B2204DF1300A6C615 /* MemoryLeaksExample */,
 				3873BA632204DF1500A6C615 /* MemoryLeaksExampleTests */,
 				3873BA4A2204DF1300A6C615 /* Products */,
@@ -144,6 +162,7 @@
 				3873BA4C2204DF1300A6C615 /* AppDelegate.swift */,
 				3873BADB220A6DBB00A6C615 /* AppState.swift */,
 				3873BADD220A6EB700A6C615 /* AppRouter.swift */,
+				3873BA752208E09A00A6C615 /* Environment.swift */,
 				3873BA7C2208FF6D00A6C615 /* Extensions and Utilities */,
 				3873BA742208E07100A6C615 /* Model */,
 				3873BAE6220B4FCC00A6C615 /* Services */,
@@ -186,8 +205,8 @@
 		3873BA742208E07100A6C615 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3873BA752208E09A00A6C615 /* Environment.swift */,
 				3873BADF220A7BE700A6C615 /* LoginState.swift */,
+				38519795220E4DC300CBA659 /* GamesRepository.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -206,9 +225,6 @@
 		3873BA7C2208FF6D00A6C615 /* Extensions and Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				3873BA7D2208FF8B00A6C615 /* AsDriverLogError.swift */,
-				3873BAE9220B739000A6C615 /* RxStore.swift */,
-				3873BAED220B962300A6C615 /* UnwrapOptional.swift */,
 			);
 			path = "Extensions and Utilities";
 			sourceTree = "<group>";
@@ -263,6 +279,7 @@
 				3873BA462204DF1300A6C615 /* Frameworks */,
 				3873BA472204DF1300A6C615 /* Resources */,
 				88E40809780DED912017A0AD /* [CP] Embed Pods Frameworks */,
+				384C45752211F61D00A29C08 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -422,19 +439,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				3873BA792208FD2800A6C615 /* LoginViewModel.swift in Sources */,
+				380FC2A5221246F200817253 /* PlayGamesViewModel.swift in Sources */,
 				3873BAE0220A7BE700A6C615 /* LoginState.swift in Sources */,
 				3873BA762208E09A00A6C615 /* Environment.swift in Sources */,
 				3873BADC220A6DBB00A6C615 /* AppState.swift in Sources */,
 				3873BA7B2208FD9400A6C615 /* LoginService.swift in Sources */,
 				38519794220E16A900CBA659 /* ViewProfileViewController.swift in Sources */,
 				3873BADE220A6EB700A6C615 /* AppRouter.swift in Sources */,
-				3873BA7E2208FF8B00A6C615 /* AsDriverLogError.swift in Sources */,
 				3873BAE8220B507400A6C615 /* LoginViewState.swift in Sources */,
+				38519796220E4DC300CBA659 /* GamesRepository.swift in Sources */,
 				3851978F220E162900CBA659 /* PlayGamesViewController.swift in Sources */,
 				3873BA4F2204DF1300A6C615 /* LoginViewController.swift in Sources */,
 				38519787220DFF0A00CBA659 /* HomeScreenViewModel.swift in Sources */,
-				3873BAEE220B962300A6C615 /* UnwrapOptional.swift in Sources */,
-				3873BAEA220B739000A6C615 /* RxStore.swift in Sources */,
 				3873BA4D2204DF1300A6C615 /* AppDelegate.swift in Sources */,
 				3873BAE5220A86E900A6C615 /* HomeScreenViewController.swift in Sources */,
 			);

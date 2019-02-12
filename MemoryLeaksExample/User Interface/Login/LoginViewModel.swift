@@ -51,9 +51,6 @@ extension LoginViewModel {
             })
             .withLatestFrom(usernameAndPassword)
             .flatMap(Dependencies.loginValidator)
-            .do(onNext: { _ in
-                loginViewAction(.startValidatingCredentials)
-            })
             .subscribe(onNext: {
                 processLoginResult($0)
             })

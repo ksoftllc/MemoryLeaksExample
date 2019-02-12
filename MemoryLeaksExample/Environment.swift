@@ -8,6 +8,7 @@
 import Foundation
 import RxSwift
 import ReSwift
+import CMUtilities
 
 //Functional method of dependency injection as described at https://www.pointfree.co/blog/posts/21-how-to-control-the-world
 struct Environment {
@@ -19,7 +20,7 @@ struct Environment {
     var appState: Observable<AppState> = appStateStore.state
     
     //AppRouter
-    var router: (RoutingAction) -> Void = { action in appRouterStateStore.dispatch(action) }
+    var router: (AppRouterAction) -> Void = { action in appRouterStateStore.dispatch(action) } 
     var appRouterState: Observable<RoutingState> = appRouterStateStore.state
     
     //LoginView
