@@ -40,19 +40,61 @@ precedencegroup SingleTypeComposition {
     higherThan: ForwardApplication
 }
 
-///Pipe the item on the left into the function on the right
 infix operator |>: ForwardApplication
+
+/**
+ Pipe the item on the left into the function on the right
+ 
+ - Parameters:
+     - x:   input
+     - f:   operation to be performed on input
+ 
+ - Returns: result of f(x)
+ */
 public func |> <A, B>(x: A, f: (A) -> B) -> B {
     return f(x)
 }
 
-///Compose 2 functions f(B) -> C and g(A) -> B such that the resulting function is g(f(A)) -> C
+
 infix operator >>>: ForwardComposition
+
+/**
+ Compose 2 functions f(B) -> C and g(A) -> B such that the resulting function is g(f(A)) -> C
+ 
+ - Parameters:
+     - f:   left side function
+     - g:   right side function
+ 
+ - Returns: function g(f(A)) -> C
+ */
 public func >>> <A, B, C>(f: @escaping (A) -> B, g: @escaping (B) -> C) -> (A) -> C {
     return { g(f($0)) }
 }
 
-///This overload of the diamond operator composes operations on an object type that return void by performing f then g functions sequentially.
+/**
+ This overload of the diamond operator forward composes (f >>> g) functions that operate on the same type.
+ 
+ - Parameters:
+     - f: left side function of form (A) -> A
+     - g: right side function of form (A) -> A
+ 
+ - Returns: function g(f(A)) -> A
+ */
+infix operator <>: SingleTypeComposition
+public func <> <A>(f: @escaping (A) -> A, g: @escaping (A) -> A) -> (A) -> A {
+    return f >>> g
+}
+
+/**
+ This overload of the diamond operator composes operations on an object type that return void by
+ performing f then g functions sequentially.
+ 
+ - Parameters:
+ - f:   left side function of form (A) -> Void
+ - g:   right side function of form (A) -> Void
+ 
+ - Returns: function that performs f(A) then g(A)
+ */
 func <> <A: AnyObject>(f: @escaping (A) -> Void, g: @escaping (A) -> Void) -> (A) -> Void {
     return { a in
         f(a)
@@ -60,13 +102,16 @@ func <> <A: AnyObject>(f: @escaping (A) -> Void, g: @escaping (A) -> Void) -> (A
     }
 }
 
-///This overload of the diamond operator forward composes (f >>> g) functions that operate on the same type.
-infix operator <>: SingleTypeComposition
-public func <> <A>(f: @escaping (A) -> A, g: @escaping (A) -> A) -> (A) -> A {
-    return f >>> g
-}
-
-///This overload of the diamond operator composes mutating operations on structs by performing f then g functions sequentially.
+/**
+ This overload of the diamond operator composes mutating operations on structs by performing f then g
+ functions sequentially.
+ 
+ - Parameters:
+     - f: left side struct mutating function of form (inout A) -> Void
+     - g: right side struct mutating function of form (inout A) -> Void
+ 
+ - Returns: function that performs f(A) then g(A)
+ */
 public func <> <A>(f: @escaping (inout A) -> Void, g: @escaping (inout A) -> Void) -> (inout A) -> Void {
     return { a in
         f(&a)
