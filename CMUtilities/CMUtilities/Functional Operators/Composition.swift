@@ -26,13 +26,15 @@
 
 import Foundation
 
-precedencegroup ForwardApplication {
-    associativity: left
-}
 
 precedencegroup ForwardComposition {
     associativity: left
-    higherThan: SingleTypeComposition
+    higherThan: SingleTypeComposition, EffectfulComposition
+}
+
+precedencegroup EffectfulComposition {
+    associativity: left
+    higherThan: ForwardApplication
 }
 
 precedencegroup SingleTypeComposition {
@@ -40,6 +42,13 @@ precedencegroup SingleTypeComposition {
     higherThan: ForwardApplication
 }
 
+precedencegroup ForwardApplication {
+    associativity: left
+}
+
+/*
+ Pipe Forward
+ */
 infix operator |>: ForwardApplication
 
 /**
@@ -56,6 +65,10 @@ public func |> <A, B>(x: A, f: (A) -> B) -> B {
 }
 
 
+/*
+ Forward Composition
+ */
+
 infix operator >>>: ForwardComposition
 
 /**
@@ -70,6 +83,11 @@ infix operator >>>: ForwardComposition
 public func >>> <A, B, C>(f: @escaping (A) -> B, g: @escaping (B) -> C) -> (A) -> C {
     return { g(f($0)) }
 }
+
+
+/*
+ Single Type Composition
+ */
 
 /**
  This overload of the diamond operator forward composes (f >>> g) functions that operate on the same type.
@@ -95,7 +113,7 @@ public func <> <A>(f: @escaping (A) -> A, g: @escaping (A) -> A) -> (A) -> A {
  
  - Returns: function that performs f(A) then g(A)
  */
-func <> <A: AnyObject>(f: @escaping (A) -> Void, g: @escaping (A) -> Void) -> (A) -> Void {
+public func <> <A: AnyObject>(f: @escaping (A) -> Void, g: @escaping (A) -> Void) -> (A) -> Void {
     return { a in
         f(a)
         g(a)
@@ -116,5 +134,57 @@ public func <> <A>(f: @escaping (inout A) -> Void, g: @escaping (inout A) -> Voi
     return { a in
         f(&a)
         g(&a)
+    }
+}
+
+/*
+ Effectful Composition - Hidden outputs
+ */
+
+infix operator >=>: EffectfulComposition
+
+///Example "fish" operator is for composing functions that produce side effects of String type
+public func >=> <A, B, C>(
+    _ f: @escaping (A) -> (B, [String]),
+    _ g: @escaping (B) -> (C, [String])
+    ) -> ((A) -> (C, [String])) {
+    
+    return { a in
+        let (b, logs) = f(a)
+        let (c, moreLogs) = g(b)
+        return (c, logs + moreLogs)
+    }
+}
+
+///Example "fish" operator for composing two functions that produce arrays
+public func >=> <A, B, C>(
+    _ f: @escaping (A) -> [B],
+    _ g: @escaping (B) -> [C]
+    ) -> ((A) -> [C]) {
+    
+    return { a in
+        return f(a).flatMap(g)
+    }
+}
+
+/**
+ "Fish" operator for composing two functions that produce optional results.
+ 
+ - Parameters:
+     - f: left side function that produces an optional
+     - g: right side function that produces an optional
+ 
+ - Returns: nil if either function returns nil, otherwise returns g(f(A)) -> C
+ */
+public func >=> <A, B, C>(
+    _ f: @escaping (A) -> B?,
+    _ g: @escaping (B) -> C?
+    ) -> ((A) -> C?) {
+    
+    return { a in
+        guard let b = f(a) else {
+            return nil
+        }
+        return g(b)
     }
 }
