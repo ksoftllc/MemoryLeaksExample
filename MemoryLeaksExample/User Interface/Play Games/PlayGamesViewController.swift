@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import CMUtilities
 
 class PlayGamesViewController: UIViewController {
     
@@ -19,6 +20,8 @@ class PlayGamesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        hideTableViewFooter(gamesTable)
         
         let cellNib = UINib.init(nibName: "GameCell", bundle: nil)
         gamesTable.register(cellNib, forCellReuseIdentifier: PlayGamesViewController.gameCellId)
