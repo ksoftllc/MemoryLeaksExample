@@ -97,12 +97,13 @@ public class AppRouter: NSObject {
     
     public static func storeInstance(reducer: @escaping AppRouterReducer, initialState: AppRouterState)
                     -> RxStore<AppRouterState> {
-        
+                        
+        guard instance == nil else {
+            return instance!
+        }
+
         let appRouterReducer: (Action, AppRouterState?) -> AppRouterState = { action, state in
             
-//            guard var state = state else {
-//                fatalError("AppRouter state was never initialized.")
-//            }
             var state = state ?? initialState
             
             if let AppRouterAction = action as? AppRouterAction {
@@ -120,7 +121,8 @@ public class AppRouter: NSObject {
             return state
         }
         
-        return RxStore<AppRouterState>(reducer: appRouterReducer, initialState: nil)
+        instance =  RxStore<AppRouterState>(reducer: appRouterReducer, initialState: nil)
+        return instance!
     }
     
     private func pushViewController(identifier: String, animated: Bool) {
@@ -186,16 +188,13 @@ extension AppRouter: UINavigationControllerDelegate {
 
 //Convenience functions
 fileprivate func appRouterAction(_ action: Action) {
-    guard let appRouter = AppRouter.instance else {
-        fatalError("No AppRouter instance")
-    }
     appRouter.dispatch(action)
 }
 
-fileprivate var appRouterState: Observable<AppRouterState> {
+fileprivate var appRouter: RxStore<AppRouterState> {
     guard let appRouter = AppRouter.instance else {
         fatalError("App must invoke AppRouter.storeInstance(...) during app launch" )
     }
-    return appRouter.state
+    return appRouter
 }
 

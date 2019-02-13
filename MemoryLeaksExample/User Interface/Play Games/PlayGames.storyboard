@@ -17,20 +17,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tx1-Wi-o8d">
-                                <rect key="frame" x="152" y="318.5" width="71" height="30"/>
-                                <state key="normal" title="Play Tetris"/>
-                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WQI-Br-Tbb">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.92941176469999998" green="0.91764705879999997" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="tx1-Wi-o8d" firstAttribute="centerY" secondItem="5Q2-DA-Luy" secondAttribute="centerY" id="UT3-qU-hjV"/>
-                            <constraint firstItem="tx1-Wi-o8d" firstAttribute="centerX" secondItem="5Q2-DA-Luy" secondAttribute="centerX" id="gdD-wV-hJq"/>
+                            <constraint firstItem="ziM-Ij-mK1" firstAttribute="trailing" secondItem="WQI-Br-Tbb" secondAttribute="trailing" id="DPf-Sv-8Yl"/>
+                            <constraint firstItem="WQI-Br-Tbb" firstAttribute="leading" secondItem="ziM-Ij-mK1" secondAttribute="leading" id="W0E-tT-srh"/>
+                            <constraint firstItem="ziM-Ij-mK1" firstAttribute="bottom" secondItem="WQI-Br-Tbb" secondAttribute="bottom" id="bYf-Wn-a9s"/>
+                            <constraint firstItem="WQI-Br-Tbb" firstAttribute="top" secondItem="ziM-Ij-mK1" secondAttribute="top" id="ixq-n7-OA1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ziM-Ij-mK1"/>
                     </view>
                     <connections>
-                        <outlet property="playTetrisTap" destination="tx1-Wi-o8d" id="vBx-Xr-N5c"/>
+                        <outlet property="gamesTable" destination="WQI-Br-Tbb" id="Ivb-Rl-0gQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rbS-iz-HHu" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -16,6 +16,8 @@
 		384C456B2211F37400A29C08 /* RxStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384C456A2211F37400A29C08 /* RxStore.swift */; };
 		384C456D2211F39B00A29C08 /* AsDriverLogError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384C456C2211F39B00A29C08 /* AsDriverLogError.swift */; };
 		384C45712211F3CD00A29C08 /* UnwrapOptional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384C45702211F3CD00A29C08 /* UnwrapOptional.swift */; };
+		38DF9A332214AC96009DD29E /* UITableViewConfigurators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DF9A322214AC96009DD29E /* UITableViewConfigurators.swift */; };
+		38DF9A362214AD1A009DD29E /* Composition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DF9A352214AD1A009DD29E /* Composition.swift */; };
 		A5712D824CFFDA7F1C5C80B0 /* Pods_CMUtilitiesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97A846601C69FB1A7DEF7EF3 /* Pods_CMUtilitiesTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +43,8 @@
 		384C456A2211F37400A29C08 /* RxStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxStore.swift; sourceTree = "<group>"; };
 		384C456C2211F39B00A29C08 /* AsDriverLogError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsDriverLogError.swift; sourceTree = "<group>"; };
 		384C45702211F3CD00A29C08 /* UnwrapOptional.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnwrapOptional.swift; sourceTree = "<group>"; };
+		38DF9A322214AC96009DD29E /* UITableViewConfigurators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewConfigurators.swift; sourceTree = "<group>"; };
+		38DF9A352214AD1A009DD29E /* Composition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Composition.swift; sourceTree = "<group>"; };
 		8D1F4BF57ACCA95292BA3C01 /* Pods-CMUtilitiesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUtilitiesTests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-CMUtilitiesTests/Pods-CMUtilitiesTests.release.xcconfig"; sourceTree = "<group>"; };
 		97A846601C69FB1A7DEF7EF3 /* Pods_CMUtilitiesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CMUtilitiesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CA1F86EC92A33F6E61706B8 /* Pods-CMUtilities.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUtilities.release.xcconfig"; path = "../Pods/Target Support Files/Pods-CMUtilities/Pods-CMUtilities.release.xcconfig"; sourceTree = "<group>"; };
@@ -110,10 +114,12 @@
 		384C45472211F19E00A29C08 /* CMUtilities */ = {
 			isa = PBXGroup;
 			children = (
+				38DF9A342214ACF9009DD29E /* Functional Operators */,
 				380FC2A1221217AE00817253 /* Types */,
 				384C45622211F26300A29C08 /* ReSwift Extensions */,
 				384C455F2211F23B00A29C08 /* RxExtensions */,
 				384C45672211F29400A29C08 /* Supporting Files */,
+				38DF9A302214AC59009DD29E /* UIView Configurators */,
 				384C45482211F19E00A29C08 /* CMUtilities.h */,
 				384C45492211F19E00A29C08 /* Info.plist */,
 			);
@@ -152,6 +158,30 @@
 			children = (
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		38DF9A302214AC59009DD29E /* UIView Configurators */ = {
+			isa = PBXGroup;
+			children = (
+				38DF9A312214AC78009DD29E /* UITableView Configurators */,
+			);
+			path = "UIView Configurators";
+			sourceTree = "<group>";
+		};
+		38DF9A312214AC78009DD29E /* UITableView Configurators */ = {
+			isa = PBXGroup;
+			children = (
+				38DF9A322214AC96009DD29E /* UITableViewConfigurators.swift */,
+			);
+			path = "UITableView Configurators";
+			sourceTree = "<group>";
+		};
+		38DF9A342214ACF9009DD29E /* Functional Operators */ = {
+			isa = PBXGroup;
+			children = (
+				38DF9A352214AD1A009DD29E /* Composition.swift */,
+			);
+			path = "Functional Operators";
 			sourceTree = "<group>";
 		};
 		52FDA6D3B16908AE16944B02 /* Pods */ = {
@@ -339,6 +369,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38DF9A332214AC96009DD29E /* UITableViewConfigurators.swift in Sources */,
+				38DF9A362214AD1A009DD29E /* Composition.swift in Sources */,
 				380FC2A3221217C500817253 /* Stack.swift in Sources */,
 				384C456D2211F39B00A29C08 /* AsDriverLogError.swift in Sources */,
 				384C456B2211F37400A29C08 /* RxStore.swift in Sources */,

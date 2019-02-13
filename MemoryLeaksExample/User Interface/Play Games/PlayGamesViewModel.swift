@@ -8,10 +8,12 @@
 
 import RxSwift
 
-func playGamesViewModel(playTetrisTap: Observable<Void>)
-    -> Disposable {
-    return playTetrisTap
-        .subscribe(onNext: {
-            Dependencies.routerAction(RoutingAction.pushTetris)
-        })
+
+struct PlayGamesViewModel {
+    
+    let gameNames: Observable<[GameName]>
+    
+    init() {
+        gameNames = GamesRepository().allGames.map { $0.map { $0.name } }
+    }
 }

@@ -10,19 +10,29 @@ import RxSwift
 import RxCocoa
 
 class PlayGamesViewController: UIViewController {
+    
+    private static let gameCellId = "gameCell"
 
-    @IBOutlet weak var playTetrisTap: UIButton!
+    @IBOutlet weak var gamesTable: UITableView!
     
     private var bag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let cellNib = UINib.init(nibName: "GameCell", bundle: nil)
+        gamesTable.register(cellNib, forCellReuseIdentifier: PlayGamesViewController.gameCellId)
 
-        let viewModel = playGamesViewModel(playTetrisTap: playTetrisTap.rx.tap.asObservable())
+        let viewModel = PlayGamesViewModel()
         
         bag.insert(
-            viewModel
+            viewModel.gameNames.bind(to: gamesTable.rx.items) { [weak self](tableView, row, element) in
+                let cell = self?.gamesTable.dequeueReusableCell(withIdentifier: PlayGamesViewController.gameCellId) as! GameCell
+                cell.nameLabel.text = element
+                return cell
+            }
         )
+
     }
     
     #if DEBUG
