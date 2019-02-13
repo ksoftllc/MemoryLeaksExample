@@ -8,6 +8,6 @@
 
 import UIKit
 
-func hideTableViewFooter(_ tableView: UITableView) {
+public func hideTableViewFooter(_ tableView: UITableView) {
     tableView.tableFooterView = UIView(frame: CGRect.zero)
 }
