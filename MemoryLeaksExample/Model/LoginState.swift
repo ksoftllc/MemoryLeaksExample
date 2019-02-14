@@ -12,7 +12,7 @@ import ReSwift
 struct LoginState: StateType {
     
     enum LoginStatus {
-        case loggedOut, loggedIn(username: Username, jwt: String)
+        case loggedOut, loggedIn(user: User, jwt: String)
         
         ///Returns username if logged in
         var username: Username? {
@@ -20,8 +20,38 @@ struct LoginState: StateType {
             
             case .loggedOut:
                 return nil
-            case .loggedIn(let username, _):
-                return username
+            case .loggedIn(let user, _):
+                return user.username
+            }
+        }
+        
+        var first: Name? {
+            switch self {
+                
+            case .loggedOut:
+                return nil
+            case .loggedIn(let user, _):
+                return user.first
+            }
+        }
+        
+        var last: Name? {
+            switch self {
+                
+            case .loggedOut:
+                return nil
+            case .loggedIn(let user, _):
+                return user.last
+            }
+        }
+        
+        var profilePicture: UIImage? {
+            switch self {
+                
+            case .loggedOut:
+                return nil
+            case .loggedIn(let user, _):
+                return user.profilePicture
             }
         }
     }
@@ -40,8 +70,8 @@ func loginReducer(action: Action, state: LoginState?) -> LoginState {
     if let loginAction = action as? AppAction {
         switch loginAction {
             
-        case .logUserIn(let username, let jwt):
-            state.loginStatus = .loggedIn(username: username, jwt: jwt)
+        case .logUserIn(let user, let jwt):
+            state.loginStatus = .loggedIn(user: user, jwt: jwt)
         case .logUserOut:
             state.loginStatus = .loggedOut
         }
@@ -55,6 +85,6 @@ func logUserOut() {
     Dependencies.app(.logUserOut)
 }
 
-func logUserIn(username: Username, jwt: JWT) {
-    Dependencies.app(.logUserIn(username: username, jwt: jwt))
+func logUserIn(user: User, jwt: JWT) {
+    Dependencies.app(.logUserIn(user: user, jwt: jwt))
 }

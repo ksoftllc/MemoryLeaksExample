@@ -6,13 +6,29 @@
 //
 
 import UIKit
+import RxSwift
+import CMUtilities
 
 class ViewProfileViewController: UIViewController {
+    
+    @IBOutlet weak var profilePictureImageView: UIImageView!
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var fullnameLabel: UILabel!
+    
+    private var bag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        profilePictureImageView |> makeViewRound
 
-        // Do any additional setup after loading the view.
+        let viewModel = viewProfileViewModel()
+        
+        bag.insert(
+            viewModel.username.drive(usernameLabel.rx.text),
+            viewModel.fullname.drive(fullnameLabel.rx.text),
+            viewModel.profilePicture.drive(profilePictureImageView.rx.image)
+        )
     }
     
     #if DEBUG

@@ -36,6 +36,8 @@
 		3873BAE5220A86E900A6C615 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3873BAE4220A86E900A6C615 /* HomeScreenViewController.swift */; };
 		3873BAE8220B507400A6C615 /* LoginViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3873BAE7220B507400A6C615 /* LoginViewState.swift */; };
 		38DF9A2F22139BFE009DD29E /* GameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DF9A2E22139BFE009DD29E /* GameCell.swift */; };
+		38EBA17F2215D0B60060BB46 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EBA17E2215D0B60060BB46 /* User.swift */; };
+		38EBA1812215E54A0060BB46 /* ViewProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EBA1802215E54A0060BB46 /* ViewProfileViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +96,8 @@
 		3873BAE4220A86E900A6C615 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		3873BAE7220B507400A6C615 /* LoginViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewState.swift; sourceTree = "<group>"; };
 		38DF9A2E22139BFE009DD29E /* GameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCell.swift; sourceTree = "<group>"; };
+		38EBA17E2215D0B60060BB46 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		38EBA1802215E54A0060BB46 /* ViewProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProfileViewModel.swift; sourceTree = "<group>"; };
 		74A352283A734EE8D8CD6D15 /* Pods_MemoryLeaksExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MemoryLeaksExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A307F609FF234C19F9D3BFF /* Pods_MemoryLeaksExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MemoryLeaksExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		949F14D343E2F9ECA1D8C9F3 /* Pods-MemoryLeaksExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MemoryLeaksExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MemoryLeaksExampleTests/Pods-MemoryLeaksExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -147,6 +151,7 @@
 			children = (
 				38519791220E168E00CBA659 /* ViewProfile.storyboard */,
 				38519793220E16A900CBA659 /* ViewProfileViewController.swift */,
+				38EBA1802215E54A0060BB46 /* ViewProfileViewModel.swift */,
 			);
 			path = "View Profile";
 			sourceTree = "<group>";
@@ -223,6 +228,7 @@
 				380FC2AA22138A3000817253 /* Repositories */,
 				3873BADF220A7BE700A6C615 /* LoginState.swift */,
 				380FC2AB22138A5800817253 /* Game.swift */,
+				38EBA17E2215D0B60060BB46 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -465,11 +471,13 @@
 				38519794220E16A900CBA659 /* ViewProfileViewController.swift in Sources */,
 				3873BADE220A6EB700A6C615 /* AppRouter.swift in Sources */,
 				3873BAE8220B507400A6C615 /* LoginViewState.swift in Sources */,
+				38EBA1812215E54A0060BB46 /* ViewProfileViewModel.swift in Sources */,
 				38519796220E4DC300CBA659 /* GamesRepository.swift in Sources */,
 				3851978F220E162900CBA659 /* PlayGamesViewController.swift in Sources */,
 				3873BA4F2204DF1300A6C615 /* LoginViewController.swift in Sources */,
 				38519787220DFF0A00CBA659 /* HomeScreenViewModel.swift in Sources */,
 				38DF9A2F22139BFE009DD29E /* GameCell.swift in Sources */,
+				38EBA17F2215D0B60060BB46 /* User.swift in Sources */,
 				3873BA4D2204DF1300A6C615 /* AppDelegate.swift in Sources */,
 				3873BAE5220A86E900A6C615 /* HomeScreenViewController.swift in Sources */,
 				380FC2AC22138A5800817253 /* Game.swift in Sources */,

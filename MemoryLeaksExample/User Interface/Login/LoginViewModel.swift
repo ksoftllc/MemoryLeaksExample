@@ -72,8 +72,8 @@ fileprivate func bothTrue(first: Bool, second: Bool) -> Bool {
 
 fileprivate func processLoginResult(_ loginResult: LoginResult) {
     switch loginResult {
-    case .success(let username, let jwt):
-        logUserIn(username: username, jwt: jwt)
+    case .success(let user, let jwt):
+        logUserIn(user: user, jwt: jwt)
         appRouterAction(.displayHomeScreen)
     case .failure:
         appRouterAction(.alert(title: "Failed Login", message: "Verify that username and password are correct", completion: {

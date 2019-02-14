@@ -12,10 +12,12 @@ import RxCocoa
 func homeScreenViewModel(viewProfileTap: Observable<Void>,
                          playGamesTap: Observable<Void>,
                          logoutTap: Observable<Void>)
-    -> (username: Driver<Username>,
-    viewProfileDisposable: Disposable,
-    playGamesDisposable: Disposable,
-    logoutDisposable: Disposable)
+    -> (
+            username: Driver<Username>,
+            viewProfileDisposable: Disposable,
+            playGamesDisposable: Disposable,
+            logoutDisposable: Disposable
+        )
 {
     
     let username = Dependencies.appState
@@ -33,6 +35,7 @@ func homeScreenViewModel(viewProfileTap: Observable<Void>,
     let logoutDisposable = logoutTap
         .do(onNext: logUserOut)
         .subscribe(onNext: displayLoginScreen)
+    
     return (username, viewProfileDisposable, playGamesDisposable, logoutDisposable)
 }
 

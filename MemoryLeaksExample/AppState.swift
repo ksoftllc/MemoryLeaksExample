@@ -16,6 +16,6 @@ func appReducer(action: Action, state: AppState?) -> AppState {
 }
 
 enum AppAction: Action {
-    case logUserIn(username: Username, jwt: JWT)
+    case logUserIn(user: User, jwt: JWT)
     case logUserOut
 }

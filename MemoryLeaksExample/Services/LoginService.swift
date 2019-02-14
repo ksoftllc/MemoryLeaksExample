@@ -13,7 +13,8 @@ enum LoginError: Error {
 }
 
 enum LoginResult {
-    case success(username: Username, jwt: JWT), failure(error: LoginError)
+    case success(user: User, jwt: JWT)
+    case failure(error: LoginError)
 }
 
 typealias JWT = String //just for demo
@@ -22,28 +23,25 @@ typealias Password = String
 
 func mockLoginValidatorService(username: String, password: String) -> Observable<LoginResult> {
 
-    return Observable<LoginResult>.create { observer in
+    return Single<LoginResult>.create { observer in
         //dispatch to simulate web service
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { //pause for 1 second as if going to web
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { //pause as if going to web
             //simulates invalid username by using "bogus" as username
             guard username != "bogus" else {
-                observer.on(.next(LoginResult.failure(error: LoginError.invalidCredentials)))
-                observer.on(.completed)
+                observer(.success(LoginResult.failure(error: LoginError.invalidCredentials)))
                 return
             }
             
             //simulates login failure by using "bogus" as password
             guard password != "bogus" else {
-                observer.on(.next(LoginResult.failure(error: LoginError.invalidCredentials)))
-                observer.on(.completed)
+                observer(.success(LoginResult.failure(error: LoginError.invalidCredentials)))
                 return
             }
             
             //accept any username/password combo that gets past the guard statements
-            observer.on(.next(LoginResult.success(username: username, jwt: "SOMEJWTSTRINGWOULDGOHERE")))
-            observer.on(.completed)
+            observer(.success(LoginResult.success(user: User(username: username), jwt: "SOMEJWTSTRINGWOULDGOHERE")))
         }
         
         return Disposables.create()
-    }
+    }.asObservable()
 }
