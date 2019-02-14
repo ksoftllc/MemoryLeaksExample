@@ -11,11 +11,13 @@ import RxCocoa
 
 func homeScreenViewModel(viewProfileTap: Observable<Void>,
                          playGamesTap: Observable<Void>,
+                         memoryLeakExampleTap: Observable<Void>,
                          logoutTap: Observable<Void>)
     -> (
             username: Driver<Username>,
             viewProfileDisposable: Disposable,
             playGamesDisposable: Disposable,
+            memoryLeakDisposable: Disposable,
             logoutDisposable: Disposable
         )
 {
@@ -36,7 +38,20 @@ func homeScreenViewModel(viewProfileTap: Observable<Void>,
         .do(onNext: logUserOut)
         .subscribe(onNext: displayLoginScreen)
     
-    return (username, viewProfileDisposable, playGamesDisposable, logoutDisposable)
+    let memoryLeakDisposable = memoryLeakExampleTap
+        .subscribe(onNext: showMemoryLeakExample)
+    
+    return (
+        username,
+        viewProfileDisposable,
+        playGamesDisposable,
+        memoryLeakDisposable,
+        logoutDisposable
+    )
+}
+
+fileprivate func showMemoryLeakExample() {
+    appRouterAction(.push(.memoryLeakExampleStoryboard))
 }
 
 fileprivate func pushPlayGamesStoryboard() {

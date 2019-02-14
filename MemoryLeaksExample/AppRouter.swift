@@ -15,6 +15,7 @@ enum AppStoryboard: String, AppRouterDestination {
     case loginStoryboard = "Login"
     case homeScreenStoryboard = "HomeScreen"
     case playGamesStoryboard = "PlayGames"
+    case memoryLeakExampleStoryboard = "MemoryLeakExample"
     case viewProfileStoryboard = "ViewProfile"
 }
 

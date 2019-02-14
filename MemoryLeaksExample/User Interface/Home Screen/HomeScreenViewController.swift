@@ -14,6 +14,7 @@ class HomeScreenViewController: UIViewController {
     @IBOutlet weak var viewProfileButton: UIButton!
     @IBOutlet weak var playGamesButton: UIButton!
     @IBOutlet weak var logoutButton: UIButton!
+    @IBOutlet weak var memoryLeakExample: UIButton!
     
     private var bag = DisposeBag()
     
@@ -23,6 +24,7 @@ class HomeScreenViewController: UIViewController {
         let viewModel = homeScreenViewModel(
             viewProfileTap: viewProfileButton.rx.tap.asObservable(),
             playGamesTap: playGamesButton.rx.tap.asObservable(),
+            memoryLeakExampleTap: memoryLeakExample.rx.tap.asObservable(),
             logoutTap: logoutButton.rx.tap.asObservable()
         )
         

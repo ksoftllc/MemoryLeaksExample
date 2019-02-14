@@ -35,6 +35,9 @@
 		3873BAE3220A86BB00A6C615 /* HomeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3873BAE2220A86BB00A6C615 /* HomeScreen.storyboard */; };
 		3873BAE5220A86E900A6C615 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3873BAE4220A86E900A6C615 /* HomeScreenViewController.swift */; };
 		3873BAE8220B507400A6C615 /* LoginViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3873BAE7220B507400A6C615 /* LoginViewState.swift */; };
+		38B83D0B2216313A002347C1 /* MemoryLeakExample.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38B83D0A2216313A002347C1 /* MemoryLeakExample.storyboard */; };
+		38B83D0F22163185002347C1 /* MemoryLeakViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B83D0E22163185002347C1 /* MemoryLeakViewModel.swift */; };
+		38B83D11221631B2002347C1 /* MemoryLeakViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B83D10221631B2002347C1 /* MemoryLeakViewController.swift */; };
 		38DF9A2F22139BFE009DD29E /* GameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DF9A2E22139BFE009DD29E /* GameCell.swift */; };
 		38EBA17F2215D0B60060BB46 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EBA17E2215D0B60060BB46 /* User.swift */; };
 		38EBA1812215E54A0060BB46 /* ViewProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EBA1802215E54A0060BB46 /* ViewProfileViewModel.swift */; };
@@ -95,6 +98,9 @@
 		3873BAE2220A86BB00A6C615 /* HomeScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeScreen.storyboard; sourceTree = "<group>"; };
 		3873BAE4220A86E900A6C615 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		3873BAE7220B507400A6C615 /* LoginViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewState.swift; sourceTree = "<group>"; };
+		38B83D0A2216313A002347C1 /* MemoryLeakExample.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MemoryLeakExample.storyboard; sourceTree = "<group>"; };
+		38B83D0E22163185002347C1 /* MemoryLeakViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryLeakViewModel.swift; sourceTree = "<group>"; };
+		38B83D10221631B2002347C1 /* MemoryLeakViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryLeakViewController.swift; sourceTree = "<group>"; };
 		38DF9A2E22139BFE009DD29E /* GameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCell.swift; sourceTree = "<group>"; };
 		38EBA17E2215D0B60060BB46 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		38EBA1802215E54A0060BB46 /* ViewProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProfileViewModel.swift; sourceTree = "<group>"; };
@@ -206,6 +212,7 @@
 			children = (
 				3873BAE1220A86A900A6C615 /* Home Screen */,
 				3873BA772208FCEE00A6C615 /* Login */,
+				38B83D0922163118002347C1 /* Memory Leak Example */,
 				3851978A220E11F000CBA659 /* Play Games */,
 				38519790220E165300CBA659 /* View Profile */,
 			);
@@ -267,6 +274,16 @@
 				3873BA7A2208FD9400A6C615 /* LoginService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		38B83D0922163118002347C1 /* Memory Leak Example */ = {
+			isa = PBXGroup;
+			children = (
+				38B83D0A2216313A002347C1 /* MemoryLeakExample.storyboard */,
+				38B83D10221631B2002347C1 /* MemoryLeakViewController.swift */,
+				38B83D0E22163185002347C1 /* MemoryLeakViewModel.swift */,
+			);
+			path = "Memory Leak Example";
 			sourceTree = "<group>";
 		};
 		6BF40577094640495C9CEE3D /* Pods */ = {
@@ -380,6 +397,7 @@
 				3873BA5A2204DF1500A6C615 /* LaunchScreen.storyboard in Resources */,
 				380FC2AE22139AF300817253 /* GameCell.xib in Resources */,
 				3873BAE3220A86BB00A6C615 /* HomeScreen.storyboard in Resources */,
+				38B83D0B2216313A002347C1 /* MemoryLeakExample.storyboard in Resources */,
 				3873BA572204DF1500A6C615 /* Assets.xcassets in Resources */,
 				3873BA522204DF1300A6C615 /* Login.storyboard in Resources */,
 			);
@@ -464,6 +482,7 @@
 			files = (
 				3873BA792208FD2800A6C615 /* LoginViewModel.swift in Sources */,
 				380FC2A5221246F200817253 /* PlayGamesViewModel.swift in Sources */,
+				38B83D11221631B2002347C1 /* MemoryLeakViewController.swift in Sources */,
 				3873BAE0220A7BE700A6C615 /* LoginState.swift in Sources */,
 				3873BA762208E09A00A6C615 /* Environment.swift in Sources */,
 				3873BADC220A6DBB00A6C615 /* AppState.swift in Sources */,
@@ -478,6 +497,7 @@
 				38519787220DFF0A00CBA659 /* HomeScreenViewModel.swift in Sources */,
 				38DF9A2F22139BFE009DD29E /* GameCell.swift in Sources */,
 				38EBA17F2215D0B60060BB46 /* User.swift in Sources */,
+				38B83D0F22163185002347C1 /* MemoryLeakViewModel.swift in Sources */,
 				3873BA4D2204DF1300A6C615 /* AppDelegate.swift in Sources */,
 				3873BAE5220A86E900A6C615 /* HomeScreenViewController.swift in Sources */,
 				380FC2AC22138A5800817253 /* Game.swift in Sources */,

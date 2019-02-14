@@ -24,18 +24,22 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="dtr-DG-eHf">
-                                <rect key="frame" x="147" y="116" width="81" height="114"/>
+                                <rect key="frame" x="110" y="116" width="155" height="156"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WzO-cC-Xie">
-                                        <rect key="frame" x="0.0" y="0.0" width="81" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="155" height="30"/>
                                         <state key="normal" title="View Profile"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PlV-w4-zV0">
-                                        <rect key="frame" x="0.0" y="42" width="81" height="30"/>
+                                        <rect key="frame" x="0.0" y="42" width="155" height="30"/>
                                         <state key="normal" title="Play Games"/>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LgV-PE-9GT">
+                                        <rect key="frame" x="0.0" y="84" width="155" height="30"/>
+                                        <state key="normal" title="Memory Leak Example"/>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gzx-RA-9mI">
-                                        <rect key="frame" x="0.0" y="84" width="81" height="30"/>
+                                        <rect key="frame" x="0.0" y="126" width="155" height="30"/>
                                         <state key="normal" title="Logout"/>
                                     </button>
                                 </subviews>
@@ -52,6 +56,7 @@
                     </view>
                     <connections>
                         <outlet property="logoutButton" destination="gzx-RA-9mI" id="zki-v2-Xm5"/>
+                        <outlet property="memoryLeakExample" destination="LgV-PE-9GT" id="7Kd-cH-tJh"/>
                         <outlet property="playGamesButton" destination="PlV-w4-zV0" id="cKF-Uf-FOq"/>
                         <outlet property="usernameLabel" destination="4bF-TK-ddm" id="4MG-I1-8MV"/>
                         <outlet property="viewProfileButton" destination="WzO-cC-Xie" id="YZD-PQ-9xx"/>
