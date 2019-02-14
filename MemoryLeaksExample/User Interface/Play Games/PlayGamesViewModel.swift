@@ -9,7 +9,7 @@
 import RxSwift
 import RxCocoa
 
-private class PrintOnDeinit {
+public class PrintOnDeinit {
     private let message: String
     
     init(message: String) {
@@ -23,7 +23,11 @@ private class PrintOnDeinit {
 
 struct PlayGamesViewModel {
     
-    private let games = GamesRepository().allGames.share()
+    private let games = Dependencies.gamesRepository.allGames.share()
+    
+    #if DEBUG
+    private let printOnDeinit = PrintOnDeinit(message: "\(String(describing: PlayGamesViewModel.self)) deinit")
+    #endif
     
     struct UIInputs {
         let rowSelected: Observable<Int>
@@ -38,20 +42,8 @@ struct PlayGamesViewModel {
  
         rowSelectedDisposable = Observable.combineLatest(inputs.rowSelected, games)
             .map { row, games in games[row] }
-            .subscribe(onNext: displayGameDetails)
+            .subscribe(onNext: Game.displayGameDetails)
     }
 }
 
-fileprivate func displayGameDetails(_ game: Game) {
-    let players = game.minPlayers == game.maxPlayers
-        ? "\(game.minPlayers)"
-        : "\(game.minPlayers) to \(game.maxPlayers)"
-    let message = """
-    Players: \(players)
-    Objective: \(game.objective)
-    """
-    appRouterAction(
-        .alert(title: game.name, message: message, completion: nil)
-    )
-}
 

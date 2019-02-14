@@ -27,9 +27,11 @@ struct Environment {
     var loginView: (LoginViewAction) -> Void = { action in loginViewStateStore.dispatch(action) }
     var loginViewState: Observable<LoginViewState> = loginViewStateStore.state
     
-    //Repositories
+    //Global Constants
     var FETCH_PAGE_SIZE = 3
     
+    //Repositories
+    var gamesRepository = GamesRepository()
 }
 
 //immutable for release build
