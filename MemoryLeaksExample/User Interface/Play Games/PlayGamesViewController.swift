@@ -26,7 +26,9 @@ class PlayGamesViewController: UIViewController {
         let cellNib = UINib.init(nibName: "GameCell", bundle: nil)
         gamesTable.register(cellNib, forCellReuseIdentifier: PlayGamesViewController.gameCellId)
 
-        let viewModel = PlayGamesViewModel(rowSelected: gamesTable.rx.itemSelected.map { $0.row }) 
+        let inputs = PlayGamesViewModel.UIInputs(rowSelected: gamesTable.rx.itemSelected.map { $0.row })
+        
+        let viewModel = PlayGamesViewModel(inputs: inputs)
         
         bag.insert(
             viewModel.gameNames.bind(to: gamesTable.rx.items) { [weak self](tableView, row, element) in
