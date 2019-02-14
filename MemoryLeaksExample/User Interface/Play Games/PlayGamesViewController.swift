@@ -21,19 +21,21 @@ class PlayGamesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        hideTableViewFooter(gamesTable)
+        gamesTable |> hideTableViewFooter
         
         let cellNib = UINib.init(nibName: "GameCell", bundle: nil)
         gamesTable.register(cellNib, forCellReuseIdentifier: PlayGamesViewController.gameCellId)
 
-        let viewModel = PlayGamesViewModel()
+        let viewModel = PlayGamesViewModel(rowSelected: gamesTable.rx.itemSelected.map { $0.row }) 
         
         bag.insert(
             viewModel.gameNames.bind(to: gamesTable.rx.items) { [weak self](tableView, row, element) in
                 let cell = self?.gamesTable.dequeueReusableCell(withIdentifier: PlayGamesViewController.gameCellId) as! GameCell
                 cell.nameLabel.text = element
                 return cell
-            }
+            },
+            
+            viewModel.rowSelectedDisposable
         )
 
     }

@@ -7,13 +7,34 @@
 //
 
 import RxSwift
+import RxCocoa
 
+private class PrintOnDeinit {
+    private let message: String
+    
+    init(message: String) {
+        self.message = message
+    }
+    
+    deinit {
+        print("\(message)")
+    }
+}
 
 struct PlayGamesViewModel {
     
-    let gameNames: Observable<[GameName]>
+    private let gamesRepository = GamesRepository()
     
-    init() {
-        gameNames = GamesRepository().allGames.map { $0.map { $0.name } }
+    //UI Outputs
+    let gameNames: Observable<[GameName]>
+    let rowSelectedDisposable: Disposable
+    
+    init(rowSelected: Observable<Int>) {
+        gameNames = gamesRepository.allGames.map { $0.map { $0.name } }
+        
+        rowSelectedDisposable = rowSelected
+            .subscribe(onNext: {
+                print("chose row \($0)")
+            })
     }
 }
