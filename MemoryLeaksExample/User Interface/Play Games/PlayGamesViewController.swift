@@ -12,7 +12,6 @@ import CMUtilities
 
 class PlayGamesViewController: UIViewController {
     
-    private static let gameCellId = "gameCell"
 
     @IBOutlet weak var gamesTable: UITableView!
     
@@ -23,8 +22,8 @@ class PlayGamesViewController: UIViewController {
         
         gamesTable |> hideTableViewFooter
         
-        let cellNib = UINib.init(nibName: "GameCell", bundle: nil)
-        gamesTable.register(cellNib, forCellReuseIdentifier: PlayGamesViewController.gameCellId)
+        let cellNib = UINib.init(nibName: GameCell.id, bundle: nil)
+        gamesTable.register(cellNib, forCellReuseIdentifier: GameCell.id)
 
         let inputs = PlayGamesViewModel.UIInputs(rowSelected: gamesTable.rx.itemSelected.map { $0.row })
         
@@ -32,7 +31,7 @@ class PlayGamesViewController: UIViewController {
         
         bag.insert(
             viewModel.gameNames.bind(to: gamesTable.rx.items) { [weak self](tableView, row, element) in
-                let cell = self?.gamesTable.dequeueReusableCell(withIdentifier: PlayGamesViewController.gameCellId) as! GameCell
+                let cell = self?.gamesTable.dequeueReusableCell(withIdentifier: GameCell.id) as! GameCell
                 cell.nameLabel.text = element
                 return cell
             },

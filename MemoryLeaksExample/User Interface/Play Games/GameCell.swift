@@ -9,6 +9,8 @@
 import UIKit
 
 class GameCell: UITableViewCell {
+    
+    static let id = "GameCell"
 
     @IBOutlet weak var nameLabel: UILabel!
     
