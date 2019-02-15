@@ -9,18 +9,6 @@
 import RxSwift
 import RxCocoa
 
-public class PrintOnDeinit {
-    private let message: String
-    
-    init(message: String) {
-        self.message = message
-    }
-    
-    deinit {
-        print("\(message)")
-    }
-}
-
 struct PlayGamesViewModel {
     
     private let games = Dependencies.gamesRepository.allGames.share()

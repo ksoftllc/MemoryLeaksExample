@@ -11,6 +11,10 @@ import RxSwift
 class MemoryLeakViewModel {
     
     private let games = Dependencies.gamesRepository.allGames.share()
+    #if DEBUG
+    private let printOnDeinit = PrintOnDeinit(message: "\(String(describing: MemoryLeakViewModel.self)) deinit")
+    #endif
+
 
     struct UIInputs {
         let rowSelected: Observable<Int>
