@@ -64,6 +64,18 @@ public func |> <A, B>(x: A, f: (A) -> B) -> B {
     return f(x)
 }
 
+/**
+ Pipe the struct on the left into the function on the right as an inout parameter.
+ 
+ - Parameters:
+     - x:   input
+     - f:   operation to be performed on input
+ 
+ - Returns: result of f(x)
+ */
+func |> <A>(a: inout A, f: (inout A) -> Void) -> Void {
+    f(&a)
+}
 
 /*
  Forward Composition
