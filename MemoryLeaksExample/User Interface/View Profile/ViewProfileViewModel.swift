@@ -14,7 +14,7 @@ func viewProfileViewModel()
         username: Driver<Username>,
         fullname: Driver<Name>,
         profilePicture: Driver<UIImage?>
-      )
+     )
 {
     let username = Dependencies.appState
         .map { $0.loginState.loginStatus.username }

@@ -8,6 +8,7 @@
 import UIKit
 import CoreData
 import CMUtilities
+import RxSwift
 
 @UIApplicationMain
   class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,8 +25,16 @@ import CMUtilities
         window.makeKeyAndVisible()
         appRouter = AppRouter(window: window, appRouterState: Dependencies.appRouterState)
         
+        #if TRACE_RESOURCES
+        _ = Observable<Int>.interval(1, scheduler: MainScheduler.instance)
+            .subscribe({_ in
+                print("Resource count \(RxSwift.Resources.total)")
+            })
+        #endif
+
         return true
     }
+
 
 }
 

@@ -171,7 +171,7 @@ public class AppRouter: NSObject {
                 }
             }
         }
-    }
+     }
 }
 
 extension AppRouter: UINavigationControllerDelegate {

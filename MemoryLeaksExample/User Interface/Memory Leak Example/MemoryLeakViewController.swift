@@ -31,7 +31,7 @@ class MemoryLeakViewController: UIViewController {
         
         bag.insert(
             viewModel.gameNames.bind(to: gamesTable.rx.items) { (tableView, row, element) in
-                return self.cellFor(element)
+                return cellFor(element, in: tableView)
             },
             
             viewModel.rowSelectedDisposable
@@ -45,11 +45,8 @@ class MemoryLeakViewController: UIViewController {
     #endif
 }
 
-private extension MemoryLeakViewController {
-  
-    func cellFor(_ element: GameName) -> UITableViewCell {
-        let cell = gamesTable.dequeueReusableCell(withIdentifier: GameCell.id) as! GameCell
-        cell.nameLabel.text = element
-        return cell
-    }
+fileprivate func cellFor(_ element: GameName, in table: UITableView) -> UITableViewCell {
+    let cell = table.dequeueReusableCell(withIdentifier: GameCell.id) as! GameCell
+    cell.nameLabel.text = element
+    return cell
 }
