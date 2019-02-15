@@ -7,24 +7,47 @@
 //
 
 import UIKit
+import RxSwift
+import CMUtilities
 
 class MemoryLeakViewController: UIViewController {
-
+    
+    @IBOutlet weak var gamesTable: UITableView!
+    
+    private var bag = DisposeBag()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        hideTableViewFooter(gamesTable)
+        let cellNib = UINib.init(nibName: GameCell.id, bundle: nil)
+        gamesTable.register(cellNib, forCellReuseIdentifier: GameCell.id)
+
+        let inputs = MemoryLeakViewModel.UIInputs(rowSelected: gamesTable.rx.itemSelected.map { $0.row })
+        let viewModel = MemoryLeakViewModel(inputs: inputs)
+        
+        bag.insert(
+            viewModel.gameNames.bind(to: gamesTable.rx.items) { (tableView, row, element) in
+                return self.cellFor(element)
+            },
+            
+            viewModel.rowSelectedDisposable
+        )
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    #if DEBUG
+    deinit {
+        print("\(String(describing: self)) deinit")
     }
-    */
+    #endif
+}
 
+private extension MemoryLeakViewController {
+  
+    func cellFor(_ element: GameName) -> UITableViewCell {
+        let cell = gamesTable.dequeueReusableCell(withIdentifier: GameCell.id) as! GameCell
+        cell.nameLabel.text = element
+        return cell
+    }
 }
