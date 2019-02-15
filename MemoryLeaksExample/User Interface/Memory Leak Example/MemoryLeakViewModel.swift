@@ -11,25 +11,21 @@ import RxSwift
 class MemoryLeakViewModel {
     
     private let games = Dependencies.gamesRepository.allGames.share()
-    #if DEBUG
-    private let printOnDeinit = PrintOnDeinit(message: "\(String(describing: MemoryLeakViewModel.self)) deinit")
-    #endif
-
 
     struct UIInputs {
         let rowSelected: Observable<Int>
     }
     
     //UI Outputs
-    let gameNames: Observable<[GameName]>
-    let rowSelectedDisposable: Disposable
+    var gameNames: Observable<[GameName]>!
+    var rowSelectedDisposable: Disposable!
     
-    init(inputs: UIInputs) {
+    func configure(using inputs: UIInputs) {
         gameNames = games.map { $0.map { $0.name } }
         
         rowSelectedDisposable = Observable.combineLatest(inputs.rowSelected, games)
             .map { row, games in games[row] }
-            .subscribe(onNext: Game.displayGameDetails)
+            .subscribe(onNext: displayGameDetails)
     }
     
     func displayGameDetails(_ game: Game) {
@@ -37,11 +33,17 @@ class MemoryLeakViewModel {
             ? "\(game.minPlayers)"
             : "\(game.minPlayers) to \(game.maxPlayers)"
         let message = """
-        Players: \(players)
-        Objective: \(game.objective)
-        """
+                      Players: \(players)
+                      Objective: \(game.objective)
+                      """
         appRouterAction(
             .alert(title: game.name, message: message, completion: nil)
         )
     }
+    
+    #if DEBUG
+    deinit {
+        print("\(String(describing: self)) deinit")
+    }
+    #endif
 }

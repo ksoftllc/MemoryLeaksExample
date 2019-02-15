@@ -25,7 +25,9 @@ class MemoryLeakViewController: UIViewController {
         gamesTable.register(cellNib, forCellReuseIdentifier: GameCell.id)
 
         let inputs = MemoryLeakViewModel.UIInputs(rowSelected: gamesTable.rx.itemSelected.map { $0.row })
-        let viewModel = MemoryLeakViewModel(inputs: inputs)
+        let viewModel = MemoryLeakViewModel()
+        
+        viewModel.configure(using: inputs)
         
         bag.insert(
             viewModel.gameNames.bind(to: gamesTable.rx.items) { (tableView, row, element) in
